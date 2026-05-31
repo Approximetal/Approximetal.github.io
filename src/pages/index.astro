@@ -81,6 +81,25 @@ const featured = [
     points: ["106K+ clips", "Video-text dataset"]
   }
 ];
+
+const demos = [
+  {
+    title: "SVLive",
+    text: "Placeholder for a live coding / controllable music generation demo."
+  },
+  {
+    title: "VoicePlatform",
+    text: "Placeholder for an audio-video translation, dubbing, and editing workflow demo."
+  },
+  {
+    title: "LEMAS-TTS / Edit",
+    text: "Placeholder for generative speech model demos built on the LEMAS corpus."
+  },
+  {
+    title: "Robot Speech Interaction",
+    text: "Placeholder for embodied speech interaction demos."
+  }
+];
 ---
 
 <Layout class="about" title={SITE.title}>
@@ -156,24 +175,19 @@ const featured = [
   </section>
 
   <section mt-12>
-    <h2>Open Source</h2>
+    <h2>Demos</h2>
     <div grid="~ cols-1 sm:cols-2 gap-2">
-      <a class="mini-card !no-underline !text-fg" href="https://github.com/Approximetal/SVLive">
-        <strong>SVLive</strong>
-        <span>Strudel + Vital + LLM live coding</span>
-      </a>
-      <a class="mini-card !no-underline !text-fg" href="https://lemas-project.github.io/LEMAS-Project/">
-        <strong>LEMAS</strong>
-        <span>150K+ hr multilingual speech corpus</span>
-      </a>
-      <a class="mini-card !no-underline !text-fg" href="https://approximetal.github.io/VoicePlatform/">
-        <strong>VoicePlatform</strong>
-        <span>Speech/video AI workflow demo</span>
-      </a>
-      <a class="mini-card !no-underline !text-fg" href="https://github.com/UmiMarch/OpenVideo/">
-        <strong>OpenVideo</strong>
-        <span>672h / 106K+ text-to-video dataset</span>
-      </a>
+      {demos.map((item) => (
+        <article class="demo-card">
+          <div class="demo-placeholder">
+            <span>demo placeholder</span>
+          </div>
+          <div class="demo-copy">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -190,7 +204,7 @@ const featured = [
 
 <style>
   .home-card,
-  .mini-card,
+  .demo-card,
   .small-card {
     border: 1px solid hsl(var(--border));
     background: hsl(var(--bg-dark) / 0.35);
@@ -280,12 +294,11 @@ const featured = [
   }
 
   .home-card p,
-  .mini-card span {
+  .demo-card p {
     color: hsl(var(--fg-light));
   }
 
-  .home-card,
-  .mini-card {
+  .home-card {
     display: block;
     padding: 1rem;
     transition:
@@ -295,8 +308,7 @@ const featured = [
       transform 160ms ease;
   }
 
-  a.home-card:hover,
-  a.mini-card:hover {
+  a.home-card:hover {
     border-color: hsl(var(--primary) / 0.45);
     background: hsl(var(--bg-dark) / 0.72);
     box-shadow: 0 0.75rem 1.8rem hsl(var(--fg-dark) / 0.08);
@@ -337,9 +349,34 @@ const featured = [
     padding: 0.16rem 0.5rem;
   }
 
-  .mini-card strong {
-    display: block;
-    margin-bottom: 0.2rem;
+  .demo-card {
+    overflow: hidden;
+  }
+
+  .demo-placeholder {
+    align-items: center;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, hsl(var(--bg-dark) / 0.68), hsl(var(--bg) / 0.55));
+    border-bottom: 1px dashed hsl(var(--border));
+    color: hsl(var(--fg-light));
+    display: flex;
+    font-size: 0.78rem;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .demo-copy {
+    padding: 0.85rem 1rem 1rem;
+  }
+
+  .demo-copy h3 {
+    margin: 0 0 0.35rem;
+  }
+
+  .demo-copy p {
+    margin: 0;
   }
 
   .small-card {
