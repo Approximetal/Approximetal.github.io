@@ -57,28 +57,28 @@ const publications = [
 
 const featured = [
   {
-    tag: "Dataset + Speech Synthesis Models",
+    tag: "Speech Dataset + Synthesis Models",
     title: "LEMAS",
     link: "https://lemas-project.github.io/LEMAS-Project/",
-    text: "150K+ hours, 10 languages, word-level timestamps, plus TTS/Edit benchmarks.",
-    points: ["50K+ downloads", "Generative speech data"]
+    text: "150K+ hours, 10 languages, word-level timestamps, plus TTS/Editing Models.",
+    points: ["50K+ downloads", "Generative speech dataset & models"]
   },
   {
-    tag: "Product System",
+    tag: "Speech/Audio Demopage",
     title: "VoicePlatform",
     link: "https://approximetal.github.io/VoicePlatform/",
     text: "Audio/video AI workflow for ASR, TTS/VC, speech editing, dubbing, and translation.",
     points: ["3-5 min per 1-min video", "Controllable workflow"]
   },
   {
-    tag: "Music AI",
+    tag: "AI Music LiveCoding Platform",
     title: "SVLive",
     link: "https://github.com/Approximetal/SVLive",
     text: "Natural-language live coding with Strudel, Vital, and editable synthesis.",
     points: ["2,300+ presets", "MIDI <-> Strudel"]
   },
   {
-    tag: "Data",
+    tag: "Video Dataset",
     title: "OpenVideo",
     link: "https://github.com/UmiMarch/OpenVideo/",
     text: "672+ hours / 106K+ clips / 720p text-to-video dataset with annotation and validation tooling.",
@@ -270,7 +270,7 @@ const demos = [
   }
 
   .publication-thumb {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     align-items: center;
     background: hsl(var(--bg-dark) / 0.35);
     border: 1px dashed hsl(var(--border));
@@ -292,15 +292,17 @@ const demos = [
   }
 
   .publication-thumb img {
+    display: block;
     height: 100%;
     margin: 0 !important;
     object-fit: contain;
-    padding: 0.35rem;
+    object-position: center;
+    padding: 0.25rem;
     width: 100%;
   }
 
   .publication-thumb img[src] + span {
-    opacity: 0.35;
+    display: none;
   }
 
   .publication-copy h3 {
