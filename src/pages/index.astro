@@ -148,9 +148,18 @@ const featured = [
 
   .name-row {
     display: flex;
-    align-items: baseline;
+    align-items: flex-end;
     flex-wrap: wrap;
-    gap: 0.7rem 1rem;
+    gap: 0.45rem 1rem;
+  }
+
+  .name-row :global(div[flex]) {
+    align-items: flex-end;
+    margin-bottom: 0.08rem;
+  }
+
+  .name-row :global(a.btn) {
+    margin-bottom: 0;
   }
 
   .hero-bio {
