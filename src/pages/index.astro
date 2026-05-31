@@ -272,8 +272,8 @@ const demos = [
   .publication-thumb {
     aspect-ratio: 4 / 3;
     align-items: center;
-    background: hsl(var(--bg-dark) / 0.35);
-    border: 1px dashed hsl(var(--border));
+    background: transparent;
+    border: 0;
     border-radius: 0.45rem;
     color: hsl(var(--fg-light));
     display: flex;
@@ -287,6 +287,9 @@ const demos = [
   }
 
   .publication-thumb span {
+    border: 1px dashed hsl(var(--border));
+    border-radius: 0.45rem;
+    padding: 0.65rem 0.9rem;
     position: relative;
     z-index: 1;
   }
