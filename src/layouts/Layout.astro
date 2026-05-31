@@ -1,6 +1,5 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
 
@@ -21,8 +20,6 @@ const {
   title = SITE.title,
   author = SITE.author,
   description = SITE.desc,
-  hasToc = false,
-  activePage,
   lang = "en"
 } = Astro.props;
 
@@ -86,8 +83,7 @@ const canonicalURL = new URL(Astro.url.pathname, SITE.website);
   </head>
 
   <body class="font-sans">
-    <main class={`${className} flex flex-col min-h-full px-4 pt-24 pb-4 md:pb-6`}>
-      <Navbar client:load activePage={activePage} hasToc={hasToc} />
+    <main class={`${className} flex flex-col min-h-full px-4 pt-12 pb-4 md:pt-16 md:pb-6`}>
       <div class="flex-1 mb-6">
         <div class="prose prose-content prose-lg mx-auto">
           <slot />
