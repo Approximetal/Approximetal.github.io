@@ -1,6 +1,5 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
 
 import "katex/dist/katex.min.css";
@@ -89,7 +88,6 @@ const canonicalURL = new URL(Astro.url.pathname, SITE.website);
           <slot />
         </div>
       </div>
-      <Footer />
     </main>
     <script>
       // Astro's View Transitions feature deletes styles and class names injected by
