@@ -1,0 +1,14 @@
+.DS_Store
+dist
+node_modules
+*.log*
+.astro
+.vscode
+
+# Code agents
+.agents/
+.claude/
+.codex/
+.omx/
+AGENTS.md
+skills-lock.json

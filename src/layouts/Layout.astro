@@ -1,0 +1,113 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+
+import "katex/dist/katex.min.css";
+import "@/styles/main.css";
+
+export interface Props {
+  title?: string;
+  author?: string;
+  description?: string;
+  hasToc?: boolean;
+  activePage?: string;
+  lang?: "en" | "zh";
+  class?: string;
+}
+
+const {
+  title = SITE.title,
+  author = SITE.author,
+  description = SITE.desc,
+  hasToc = false,
+  activePage,
+  lang = "en"
+} = Astro.props;
+
+const className = Astro.props.class || "";
+const canonicalURL = new URL(Astro.url.pathname, SITE.website);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <title>{title}</title>
+
+    <!-- General Meta Tags -->
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+
+    <!-- Twitter -->
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:url" content={canonicalURL} />
+
+    <!-- Sitemap & Other Files -->
+    <link rel="sitemap" href="/sitemap-index.xml" type="application/xml" />
+
+    <!-- Color Theme -->
+    <script>
+      const checkTheme = () => {
+        const prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const setting = localStorage.getItem("solidjs-use-color-scheme") || "auto";
+        const shouldUseDark = setting === "dark" || (setting !== "light" && prefersDark);
+
+        document.documentElement.classList.toggle(`theme-${setting}`, true);
+        document.documentElement.classList.toggle("dark", shouldUseDark);
+      };
+
+      document.addEventListener("astro:after-swap", checkTheme);
+      checkTheme();
+    </script>
+
+    <!-- Page Transitions -->
+    <ClientRouter />
+  </head>
+
+  <body class="font-sans">
+    <main class={`${className} flex flex-col min-h-full px-4 pt-24 pb-4 md:pb-6`}>
+      <Navbar client:load activePage={activePage} hasToc={hasToc} />
+      <div class="flex-1 mb-6">
+        <div class="prose prose-content prose-lg mx-auto">
+          <slot />
+        </div>
+      </div>
+      <Footer />
+    </main>
+    <script>
+      // Astro's View Transitions feature deletes styles and class names injected by
+      // medium-zoom when navigating to a new page, which causes the zoom effect to
+      // disappear after page transition.
+      // So here I have to import css and js files separately and re-attach the zoom effect.
+      import mediumZoom from "medium-zoom/dist/pure";
+      import "medium-zoom/dist/style.css";
+
+      const zoom = mediumZoom();
+
+      document.addEventListener("astro:page-load", () => {
+        zoom.attach(":not(a) > img:not(.no-zoom)");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://approximetal.github.io/sitemap-index.xml

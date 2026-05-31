@@ -1,0 +1,235 @@
+---
+import { SITE } from "@/config";
+import type { SocialItem } from "@/types";
+import Links from "@/components/Links.astro";
+import FlipImage from "@/components/FlipImage.astro";
+import Layout from "@/layouts/Layout.astro";
+
+const socials: SocialItem[] = [
+  { icon: "", link: "/files/cv/Zhiyuan_Zhao_Academic_CV.pdf", name: "CV" },
+  { icon: "", link: "mailto:approximetal@gmail.com", name: "Email" },
+  { icon: "", link: "https://github.com/Approximetal", name: "GitHub" }
+];
+
+const featured = [
+  {
+    tag: "Dataset + Models",
+    title: "LEMAS",
+    link: "https://lemas-project.github.io/LEMAS-Project/",
+    text: "150K+ hours, 10 languages, word-level timestamps, plus TTS/Edit benchmarks.",
+    points: ["50K+ downloads", "Generative speech data"]
+  },
+  {
+    tag: "Music AI",
+    title: "SVLive",
+    link: "https://github.com/Approximetal/SVLive",
+    text: "Natural-language live coding with Strudel, Vital, and editable synthesis.",
+    points: ["2,300+ presets", "MIDI <-> Strudel"]
+  },
+  {
+    tag: "Product System",
+    title: "VoicePlatform",
+    link: "https://approximetal.github.io/VoicePlatform/",
+    text: "Audio/video AI workflow for ASR, TTS/VC, speech editing, dubbing, and translation.",
+    points: ["3-5 min per 1-min video", "Controllable workflow"]
+  },
+  {
+    tag: "Robotics",
+    title: "Robot Speech Interaction",
+    link: "https://www.youtube.com/watch?v=ssxdSVQN14I",
+    text: "Omni speech-interaction LLMs for embodied robots and real-time dialogue.",
+    points: ["Post-training data", "Evaluation pipeline"]
+  }
+];
+---
+
+<Layout class="about" title={SITE.title}>
+  <section class="grid gap-7 md:grid-cols-[1fr_10rem] md:items-end">
+    <div class="hero-title">
+      <div class="name-row my-1.5">
+        <h1 my-0>Zhiyuan Zhao</h1>
+        <Links socials={socials} />
+      </div>
+    </div>
+    <div class="size-30 md:size-38 md:mt-2">
+      <FlipImage front="https://github.com/Approximetal.png" alt="Zhiyuan Zhao" />
+    </div>
+  </section>
+
+  <section class="hero-bio">
+    <p>
+      I am a Senior Research Engineer at <a href="https://www.xpeng.com/">XPENG Robotics</a>, responsible for
+      speech interaction on the <a href="https://www.youtube.com/watch?v=ssxdSVQN14I">IRON humanoid robot</a>.
+      My research interests include generative speech/audio, speech-native interaction for embodied robots, and
+      natural-language interfaces for controllable music creation.
+    </p>
+    <p>
+      Previously, I worked at <a href="https://www.idea.edu.cn/">IDEA Research</a>,
+      <a href="https://www.ubtrobot.com/en/">UBTECH Robotics</a>, and
+      <a href="https://www.sf-tech.com.cn/">SF Tech</a>, and interned at
+      <a href="https://research.samsung.com/src-b">Samsung Research China - Beijing</a>.
+      I received my M.Sc. in Robotics from <a href="https://www.kcl.ac.uk/research/core">King's College London</a>
+      and my B.Sc. in Electronic Information Science and Technology from
+      <a href="https://wl.csu.edu.cn/English.htm">Central South University</a>.
+    </p>
+  </section>
+
+  <section mt-12>
+    <h2>Featured Projects</h2>
+    <div grid="~ cols-1 md:cols-2 gap-2">
+      {featured.map((item) => (
+        <a class="home-card project-home-card !no-underline !text-fg" href={item.link}>
+          <div class="card-kicker">{item.tag}</div>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+          <div class="project-tags">
+            {item.points.map((point) => <span>{point}</span>)}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section mt-12>
+    <h2>Open Source</h2>
+    <div grid="~ cols-1 sm:cols-2 gap-2">
+      <a class="mini-card !no-underline !text-fg" href="https://github.com/Approximetal/SVLive">
+        <strong>SVLive</strong>
+        <span>Strudel + Vital + LLM live coding</span>
+      </a>
+      <a class="mini-card !no-underline !text-fg" href="https://lemas-project.github.io/LEMAS-Project/">
+        <strong>LEMAS</strong>
+        <span>150K+ hr multilingual speech corpus</span>
+      </a>
+      <a class="mini-card !no-underline !text-fg" href="https://approximetal.github.io/VoicePlatform/">
+        <strong>VoicePlatform</strong>
+        <span>Speech/video AI workflow demo</span>
+      </a>
+      <a class="mini-card !no-underline !text-fg" href="https://github.com/UmiMarch/OpenVideo/">
+        <strong>OpenVideo</strong>
+        <span>672h / 106K+ text-to-video dataset</span>
+      </a>
+    </div>
+  </section>
+
+  <section mt-12>
+    <h2>Publications</h2>
+    <ul class="compact-list">
+      <li><strong>LEMAS</strong>: A 150K-Hour Large-scale Extensible Multilingual Audio Suite with Generative Speech Models. <a href="https://arxiv.org/pdf/2601.04233">PDF</a></li>
+      <li><strong>MelTok</strong>: 2D Tokenization for Single-Codebook Audio Compression. <a href="https://arxiv.org/pdf/2510.01903">PDF</a></li>
+      <li><strong>STFTCodec</strong>: High-Fidelity Audio Compression through Time-Frequency Domain Representation. <a href="https://arxiv.org/pdf/2503.16989">PDF</a></li>
+      <li><strong>Expressive Voice Conversion</strong>: Improving Model Stability and Training Efficiency in Fast Speed High Quality Expressive Voice Conversion System. <a href="https://approximetal.github.io/multi-speaker-VC/doc/ACM_Expressive_Voice_Conversion.pdf">PDF</a></li>
+    </ul>
+  </section>
+
+  <section mt-12>
+    <h2>Beyond Research</h2>
+    <div grid="~ cols-2 md:cols-5 gap-2">
+      {["Photography", "Travel", "Music", "Cycling", "Reading"].map((item) => (
+        <div class="small-card">{item}</div>
+      ))}
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .home-card,
+  .mini-card,
+  .small-card {
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--bg-dark) / 0.35);
+    border-radius: 0.5rem;
+  }
+
+  .hero-title {
+    padding-bottom: 0.15rem;
+  }
+
+  .name-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.7rem 1rem;
+  }
+
+  .hero-bio {
+    margin-top: 1.8rem;
+    max-width: 48rem;
+  }
+
+  .hero-bio p {
+    margin: 0.55rem 0 0;
+    color: hsl(var(--fg-light));
+    line-height: 1.6;
+  }
+
+  .home-card p,
+  .mini-card span {
+    color: hsl(var(--fg-light));
+  }
+
+  .home-card,
+  .mini-card {
+    display: block;
+    padding: 1rem;
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+
+  a.home-card:hover,
+  a.mini-card:hover {
+    border-color: hsl(var(--primary) / 0.45);
+    background: hsl(var(--bg-dark) / 0.72);
+    box-shadow: 0 0.75rem 1.8rem hsl(var(--fg-dark) / 0.08);
+    transform: translateY(-2px);
+    text-decoration: none !important;
+  }
+
+  .home-card h3 {
+    margin-top: 0.15rem;
+  }
+
+  .card-kicker {
+    color: hsl(var(--fg-light));
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .project-home-card {
+    min-height: 11.5rem;
+  }
+
+  .compact-list {
+    margin-bottom: 0;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+  }
+
+  .project-tags span {
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    color: hsl(var(--fg-light));
+    font-size: 0.76rem;
+    padding: 0.16rem 0.5rem;
+  }
+
+  .mini-card strong {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .small-card {
+    padding: 0.85rem;
+    text-align: center;
+    font-weight: 700;
+  }
+</style>
