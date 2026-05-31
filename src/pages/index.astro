@@ -17,7 +17,7 @@ const publications = [
     authors: "Zhiyuan Zhao, Lijian Lin, Ye Zhu, Kai Xie, Yunfei Liu, Yu Li",
     venue: "arXiv:2601.04233, 2026",
     placeholder: "LEMAS",
-    image: "/img/publications/lemas.png",
+    image: "/img/publications/lemas.jpg",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2601.04233" },
       { label: "Project", href: "https://lemas-project.github.io/LEMAS-Project/" }
@@ -292,12 +292,10 @@ const demos = [
   }
 
   .publication-thumb img {
-    border-radius: inherit;
     height: 100%;
-    inset: 0;
-    margin: 0;
-    object-fit: cover;
-    position: absolute;
+    margin: 0 !important;
+    object-fit: contain;
+    padding: 0.35rem;
     width: 100%;
   }
 
