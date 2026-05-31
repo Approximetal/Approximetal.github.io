@@ -11,6 +11,46 @@ const socials: SocialItem[] = [
   { icon: "", link: "https://github.com/Approximetal", name: "GitHub" }
 ];
 
+const publications = [
+  {
+    title: "LEMAS: A 150K-Hour Large-scale Extensible Multilingual Audio Suite with Generative Speech Models",
+    authors: "Zhiyuan Zhao, Lijian Lin, Ye Zhu, Kai Xie, Yunfei Liu, Yu Li",
+    venue: "arXiv:2601.04233, 2026",
+    placeholder: "LEMAS",
+    links: [
+      { label: "PDF", href: "https://arxiv.org/pdf/2601.04233" },
+      { label: "Project", href: "https://lemas-project.github.io/LEMAS-Project/" }
+    ]
+  },
+  {
+    title: "MelTok: 2D Tokenization for Single-Codebook Audio Compression",
+    authors: "Jingyi Li*, Zhiyuan Zhao*, Zhisheng Zhang, Yunfei Liu, Lijian Lin, Ye Zhu, Jiahao Wu, Qiuqiang Kong, Yu Li",
+    venue: "arXiv:2510.01903, 2025",
+    placeholder: "MelTok",
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/2510.01903" }]
+  },
+  {
+    title: "STFTCodec: High-Fidelity Audio Compression through Time-Frequency Domain Representation",
+    authors: "Tao Feng*, Zhiyuan Zhao*, Yifan Xie, Yuqi Ye, Xiangyang Luo, Xun Guan, Yu Li",
+    venue: "IEEE ICME, 2025",
+    placeholder: "STFTCodec",
+    links: [{ label: "PDF", href: "https://arxiv.org/pdf/2503.16989" }]
+  },
+  {
+    title: "Improving Model Stability and Training Efficiency in Fast Speed High Quality Expressive Voice Conversion System",
+    authors: "Zhiyuan Zhao, Jingjun Liang, Zehong Zheng, Linhuang Yan, Zhiyong Yang, Wan Ding, Dongyan Huang",
+    venue: "ACM ICMI, 2021",
+    placeholder: "VC",
+    links: [
+      {
+        label: "PDF",
+        href: "https://approximetal.github.io/multi-speaker-VC/doc/ACM_Expressive_Voice_Conversion.pdf"
+      },
+      { label: "Demo", href: "https://approximetal.github.io/multi-speaker-VC/" }
+    ]
+  }
+];
+
 const featured = [
   {
     tag: "Dataset + Models",
@@ -75,6 +115,31 @@ const featured = [
   </section>
 
   <section mt-12>
+    <h2>Publications</h2>
+    <div class="publication-list">
+      {publications.map((item) => (
+        <article class="publication-item">
+          <div class="publication-thumb">
+            <span>{item.placeholder}</span>
+          </div>
+          <div class="publication-copy">
+            <h3>{item.title}</h3>
+            <p class="publication-authors">{item.authors}</p>
+            <p class="publication-venue">{item.venue}</p>
+            <div class="publication-links">
+              {item.links.map((link) => (
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section mt-12>
     <h2>Featured Projects</h2>
     <div grid="~ cols-1 md:cols-2 gap-2">
       {featured.map((item) => (
@@ -110,16 +175,6 @@ const featured = [
         <span>672h / 106K+ text-to-video dataset</span>
       </a>
     </div>
-  </section>
-
-  <section mt-12>
-    <h2>Publications</h2>
-    <ul class="compact-list">
-      <li><strong>LEMAS</strong>: A 150K-Hour Large-scale Extensible Multilingual Audio Suite with Generative Speech Models. <a href="https://arxiv.org/pdf/2601.04233">PDF</a></li>
-      <li><strong>MelTok</strong>: 2D Tokenization for Single-Codebook Audio Compression. <a href="https://arxiv.org/pdf/2510.01903">PDF</a></li>
-      <li><strong>STFTCodec</strong>: High-Fidelity Audio Compression through Time-Frequency Domain Representation. <a href="https://arxiv.org/pdf/2503.16989">PDF</a></li>
-      <li><strong>Expressive Voice Conversion</strong>: Improving Model Stability and Training Efficiency in Fast Speed High Quality Expressive Voice Conversion System. <a href="https://approximetal.github.io/multi-speaker-VC/doc/ACM_Expressive_Voice_Conversion.pdf">PDF</a></li>
-    </ul>
   </section>
 
   <section mt-12>
@@ -171,6 +226,57 @@ const featured = [
     margin: 0.55rem 0 0;
     color: hsl(var(--fg-light));
     line-height: 1.6;
+  }
+
+  .publication-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .publication-item {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .publication-thumb {
+    aspect-ratio: 4 / 3;
+    align-items: center;
+    background: hsl(var(--bg-dark) / 0.35);
+    border: 1px dashed hsl(var(--border));
+    border-radius: 0.45rem;
+    color: hsl(var(--fg-light));
+    display: flex;
+    font-size: 0.78rem;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .publication-copy h3 {
+    font-size: 1rem;
+    line-height: 1.35;
+    margin: 0 0 0.3rem;
+  }
+
+  .publication-copy p,
+  .publication-links {
+    font-size: 0.9rem;
+    line-height: 1.42;
+    margin: 0.2rem 0;
+  }
+
+  .publication-authors,
+  .publication-venue {
+    color: hsl(var(--fg-light));
+  }
+
+  .publication-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .home-card p,
@@ -240,5 +346,15 @@ const featured = [
     padding: 0.85rem;
     text-align: center;
     font-weight: 700;
+  }
+
+  @media (max-width: 640px) {
+    .publication-item {
+      grid-template-columns: 1fr;
+    }
+
+    .publication-thumb {
+      max-width: 13rem;
+    }
   }
 </style>
