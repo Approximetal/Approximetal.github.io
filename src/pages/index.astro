@@ -235,8 +235,8 @@ const featured = [
 
   .publication-item {
     display: grid;
-    grid-template-columns: 9.5rem minmax(0, 1fr);
-    gap: 1rem;
+    grid-template-columns: clamp(6.5rem, 22vw, 9.5rem) minmax(0, 1fr);
+    gap: 0.95rem;
     align-items: start;
   }
 
@@ -348,13 +348,10 @@ const featured = [
     font-weight: 700;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 420px) {
     .publication-item {
-      grid-template-columns: 1fr;
-    }
-
-    .publication-thumb {
-      max-width: 13rem;
+      grid-template-columns: 5.6rem minmax(0, 1fr);
+      gap: 0.75rem;
     }
   }
 </style>
