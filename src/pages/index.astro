@@ -60,13 +60,6 @@ const featured = [
     points: ["50K+ downloads", "Generative speech data"]
   },
   {
-    tag: "Music AI",
-    title: "SVLive",
-    link: "https://github.com/Approximetal/SVLive",
-    text: "Natural-language live coding with Strudel, Vital, and editable synthesis.",
-    points: ["2,300+ presets", "MIDI <-> Strudel"]
-  },
-  {
     tag: "Product System",
     title: "VoicePlatform",
     link: "https://approximetal.github.io/VoicePlatform/",
@@ -74,11 +67,18 @@ const featured = [
     points: ["3-5 min per 1-min video", "Controllable workflow"]
   },
   {
-    tag: "Robotics",
-    title: "Robot Speech Interaction",
-    link: "https://www.youtube.com/watch?v=ssxdSVQN14I",
-    text: "Omni speech-interaction LLMs for embodied robots and real-time dialogue.",
-    points: ["Post-training data", "Evaluation pipeline"]
+    tag: "Music AI",
+    title: "SVLive",
+    link: "https://github.com/Approximetal/SVLive",
+    text: "Natural-language live coding with Strudel, Vital, and editable synthesis.",
+    points: ["2,300+ presets", "MIDI <-> Strudel"]
+  },
+  {
+    tag: "Data",
+    title: "OpenVideo",
+    link: "https://github.com/UmiMarch/OpenVideo/",
+    text: "672+ hours / 106K+ clips / 720p text-to-video dataset with annotation and validation tooling.",
+    points: ["106K+ clips", "Video-text dataset"]
   }
 ];
 ---
@@ -140,7 +140,7 @@ const featured = [
   </section>
 
   <section mt-12>
-    <h2>Featured Projects</h2>
+    <h2>Open Source Projects</h2>
     <div grid="~ cols-1 md:cols-2 gap-2">
       {featured.map((item) => (
         <a class="home-card project-home-card !no-underline !text-fg" href={item.link}>
