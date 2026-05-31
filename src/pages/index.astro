@@ -60,6 +60,7 @@ const featured = [
     tag: "Speech Dataset + Synthesis Models",
     title: "LEMAS",
     link: "https://lemas-project.github.io/LEMAS-Project/",
+    logo: "/img/projects/lemas.png",
     text: "150K+ hours, 10 languages, word-level timestamps, plus TTS/Editing Models.",
     points: ["50K+ downloads", "Generative speech dataset & models"]
   },
@@ -67,6 +68,7 @@ const featured = [
     tag: "Speech/Audio Demopage",
     title: "VoicePlatform",
     link: "https://approximetal.github.io/VoicePlatform/",
+    logo: "/img/projects/voiceplatform.png",
     text: "Audio/video AI workflow for ASR, TTS/VC, speech editing, dubbing, and translation.",
     points: ["3-5 min per 1-min video", "Controllable workflow"]
   },
@@ -74,6 +76,7 @@ const featured = [
     tag: "AI Music LiveCoding Platform",
     title: "SVLive",
     link: "https://github.com/Approximetal/SVLive",
+    logo: "/img/projects/svlive.png",
     text: "Natural-language live coding with Strudel, Vital, and editable synthesis.",
     points: ["2,300+ presets", "MIDI <-> Strudel"]
   },
@@ -81,6 +84,7 @@ const featured = [
     tag: "Video Dataset",
     title: "OpenVideo",
     link: "https://github.com/UmiMarch/OpenVideo/",
+    logo: "/img/projects/openvideo.png",
     text: "672+ hours / 106K+ clips / 720p text-to-video dataset with annotation and validation tooling.",
     points: ["106K+ clips", "Video-text dataset"]
   }
@@ -172,8 +176,16 @@ const demos = [
     <div class="card-grid">
       {featured.map((item) => (
         <a class="home-card project-home-card !no-underline !text-fg" href={item.link}>
-          <div class="card-kicker">{item.tag}</div>
-          <h3>{item.title}</h3>
+          <div class="project-card-head">
+            <div>
+              <div class="card-kicker">{item.tag}</div>
+              <h3>{item.title}</h3>
+            </div>
+            <div class="project-logo">
+              <img src={item.logo} alt={`${item.title} logo`} loading="lazy" />
+              <span>logo</span>
+            </div>
+          </div>
           <p>{item.text}</p>
           <div class="project-tags">
             {item.points.map((point) => <span>{point}</span>)}
@@ -356,7 +368,7 @@ const demos = [
   }
 
   .home-card h3 {
-    margin-top: 0.15rem;
+    margin: 0.15rem 0 0;
   }
 
   .card-kicker {
@@ -367,6 +379,41 @@ const demos = [
 
   .project-home-card {
     min-height: 11.5rem;
+  }
+
+  .project-card-head {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+  }
+
+  .project-logo {
+    align-items: center;
+    aspect-ratio: 1;
+    background: hsl(var(--bg) / 0.65);
+    border: 1px dashed hsl(var(--border));
+    border-radius: 0.45rem;
+    color: hsl(var(--fg-light));
+    display: flex;
+    flex: 0 0 2.65rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    justify-content: center;
+    overflow: hidden;
+    text-transform: uppercase;
+  }
+
+  .project-logo img {
+    height: 100%;
+    margin: 0 !important;
+    object-fit: contain;
+    padding: 0.28rem;
+    width: 100%;
+  }
+
+  .project-logo img[src] + span {
+    display: none;
   }
 
   .compact-list {
