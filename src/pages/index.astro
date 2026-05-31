@@ -17,6 +17,7 @@ const publications = [
     authors: "Zhiyuan Zhao, Lijian Lin, Ye Zhu, Kai Xie, Yunfei Liu, Yu Li",
     venue: "arXiv:2601.04233, 2026",
     placeholder: "LEMAS",
+    image: "/img/publications/lemas.png",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2601.04233" },
       { label: "Project", href: "https://lemas-project.github.io/LEMAS-Project/" }
@@ -27,6 +28,7 @@ const publications = [
     authors: "Jingyi Li*, Zhiyuan Zhao*, Zhisheng Zhang, Yunfei Liu, Lijian Lin, Ye Zhu, Jiahao Wu, Qiuqiang Kong, Yu Li",
     venue: "arXiv:2510.01903, 2025",
     placeholder: "MelTok",
+    image: "/img/publications/meltok.png",
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2510.01903" }]
   },
   {
@@ -34,6 +36,7 @@ const publications = [
     authors: "Tao Feng*, Zhiyuan Zhao*, Yifan Xie, Yuqi Ye, Xiangyang Luo, Xun Guan, Yu Li",
     venue: "IEEE ICME, 2025",
     placeholder: "STFTCodec",
+    image: "/img/publications/stftcodec.png",
     links: [{ label: "PDF", href: "https://arxiv.org/pdf/2503.16989" }]
   },
   {
@@ -41,6 +44,7 @@ const publications = [
     authors: "Zhiyuan Zhao, Jingjun Liang, Zehong Zheng, Linhuang Yan, Zhiyong Yang, Wan Ding, Dongyan Huang",
     venue: "ACM ICMI, 2021",
     placeholder: "VC",
+    image: "/img/publications/voice-conversion.png",
     links: [
       {
         label: "PDF",
@@ -143,6 +147,7 @@ const demos = [
       {publications.map((item) => (
         <article class="publication-item">
           <div class="publication-thumb">
+            <img src={item.image} alt={`${item.placeholder} preview`} loading="lazy" />
             <span>{item.placeholder}</span>
           </div>
           <div class="publication-copy">
@@ -276,7 +281,28 @@ const demos = [
     font-weight: 700;
     justify-content: center;
     letter-spacing: 0.04em;
+    overflow: hidden;
+    position: relative;
     text-transform: uppercase;
+  }
+
+  .publication-thumb span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .publication-thumb img {
+    border-radius: inherit;
+    height: 100%;
+    inset: 0;
+    margin: 0;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+  }
+
+  .publication-thumb img[src] + span {
+    opacity: 0.35;
   }
 
   .publication-copy h3 {
