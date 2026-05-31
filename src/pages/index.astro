@@ -160,7 +160,7 @@ const demos = [
 
   <section mt-12>
     <h2>Open Source Projects</h2>
-    <div grid="~ cols-1 md:cols-2 gap-2">
+    <div class="card-grid">
       {featured.map((item) => (
         <a class="home-card project-home-card !no-underline !text-fg" href={item.link}>
           <div class="card-kicker">{item.tag}</div>
@@ -176,7 +176,7 @@ const demos = [
 
   <section mt-12>
     <h2>Demos</h2>
-    <div grid="~ cols-1 sm:cols-2 gap-2">
+    <div class="card-grid">
       {demos.map((item) => (
         <article class="demo-card">
           <div class="demo-placeholder">
@@ -207,8 +207,14 @@ const demos = [
   .demo-card,
   .small-card {
     border: 1px solid hsl(var(--border));
-    background: hsl(var(--bg-dark) / 0.35);
+    background: hsl(var(--bg-dark) / 0.42);
     border-radius: 0.5rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
   }
 
   .hero-title {
@@ -350,6 +356,7 @@ const demos = [
   }
 
   .demo-card {
+    display: block;
     overflow: hidden;
   }
 
@@ -389,6 +396,12 @@ const demos = [
     .publication-item {
       grid-template-columns: 5.6rem minmax(0, 1fr);
       gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .card-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
