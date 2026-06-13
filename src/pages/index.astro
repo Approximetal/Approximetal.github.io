@@ -20,7 +20,7 @@ const publications = [
     image: "/img/publications/lemas.jpg",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2601.04233" },
-      { label: "Project", href: "https://lemas-project.github.io/LEMAS-Project/" }
+      { label: "ProjectPage", href: "https://lemas-project.github.io/LEMAS-Project/" }
     ]
   },
   {
@@ -50,7 +50,7 @@ const publications = [
         label: "PDF",
         href: "https://approximetal.github.io/multi-speaker-VC/doc/ACM_Expressive_Voice_Conversion.pdf"
       },
-      { label: "Demo", href: "https://approximetal.github.io/multi-speaker-VC/" }
+      { label: "DemoPage", href: "https://approximetal.github.io/multi-speaker-VC/" }
     ]
   }
 ];
@@ -60,7 +60,7 @@ const featured = [
     tag: "Speech Dataset + Synthesis Models",
     title: "LEMAS",
     link: "https://lemas-project.github.io/LEMAS-Project/",
-    logo: "/img/projects/lemas.png",
+    logo: "/img/projects/lemas.jpg",
     text: "150K+ hours, 10 languages, word-level timestamps, plus TTS/Editing Models.",
     points: ["50K+ downloads", "Generative speech dataset & models"]
   },
@@ -70,7 +70,7 @@ const featured = [
     link: "https://approximetal.github.io/VoicePlatform/",
     logo: "/img/projects/voiceplatform.png",
     text: "Audio/video AI workflow for ASR, TTS/VC, speech editing, dubbing, and translation.",
-    points: ["3-5 min per 1-min video", "Controllable workflow"]
+    points: ["automatic video translation", "Controllable workflow"]
   },
   {
     tag: "AI Music LiveCoding Platform",
@@ -78,7 +78,7 @@ const featured = [
     link: "https://github.com/Approximetal/SVLive",
     logo: "/img/projects/svlive.png",
     text: "Natural-language live coding with Strudel, Vital, and editable synthesis.",
-    points: ["2,300+ presets", "MIDI <-> Strudel"]
+    points: ["2,300+ Vital presets", "MIDI <-> Strudel"]
   },
   {
     tag: "Video Dataset",
@@ -90,22 +90,27 @@ const featured = [
   }
 ];
 
+const dreamyDemoUrl =
+  "https://strudel.cc/#Ly8gRHJlYW15IERlbW8g4oCUIEdpdEh1YiBzYW1wbGUtcGFjayB2ZXJzaW9uCi8vIEJQTTogMTEyIHwgNDIgY3ljbGVzIHwgZ3JpZDogMTYvYmFyCmxldCBjcG0gPSAyOC4wOwoKLy8gTG9hZCBwcmUtcmVuZGVyZWQgVml0YWwgc2FtcGxlcyBmcm9tIEdpdEh1Yi4KLy8gRGlyZWN0IHJhdyBVUkwgbWF0Y2hlcyB0aGUgY29tbW9uIHN0cnVkZWwuY2Mgc2FtcGxlLXBhY2sgcGF0dGVybiBhbmQgYXZvaWRzIGNhY2hlZCBnaXRodWI6IHJlc29sdXRpb24uCmF3YWl0IHNhbXBsZXMoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9BcHByb3hpbWV0YWwvU1ZMaXZlLzY3NTMxMTY1MDc2NGZlZjNiYTgwNWZkMzRjMGI2YTdiOTcxZjUxODcvcGFja2FnZXMvc3RydWRlbC1kai9zYW1wbGVzL2RyZWFteS1kZW1vLXZpdGFsL3N0cnVkZWwuanNvbicpCgpsZXQgS0VZID0gJ3ZpdGFsX2tleXN0YXRpb24nOwpsZXQgUEFEID0gJ3ZpdGFsX2ZsdXRlXzEnOwpsZXQgSE9STiA9ICd2aXRhbF9kYW1wZWRfaG9ybic7CmxldCBQTFVDSyA9ICd2aXRhbF9wbHVja19zYWQnOwpsZXQgTUFSSU1CQSA9ICd2aXRhbF9sZWFkXzMnOwoKLy8g4pWQ4pWQ4pWQIEFjY29tcGFuaW1lbnQ6IDI2ICsgMTYgPSA0MiBjeWNsZXMg4pWQ4pWQ4pWQCgpsZXQgdHJhY2tfYXJwX2FjY29tcGFuaW1lbnRfYSA9IG5vdGUoYDwKICBbZzIgYTMgYjMgZnM0IH4gYTMgYjMgZnM0XSoyCiAgW2EyIGczIGM0IGc0IH4gZzMgYzQgZzRdKjIKPmApLnMoS0VZKQogIC5yZWxlYXNlKDAuOCkKICAuc2xvdygyKQogIC5nYWluKHBlcmxpbi5yYW5nZSgwLjM4LCAwLjg0KS5zbG93KDEyKSkKICAubHBmKHNpbmUucmFuZ2UoMTYwMCwgNDIwMCkuc2xvdygxMikpCiAgLnJvb20oc2luZS5yYW5nZSgwLjM1LCAwLjc1KS5zbG93KDgpKQogIC5kZWxheSgiLjM1Oi4xOi41NSIpCiAgLmxwZW52KDAuNSk7CgpsZXQgdHJhY2tfYXJwX2FjY29tcGFuaW1lbnRfYiA9IG5vdGUoYDwKW1thMixnMixjMyxlM10gW2czLGIzXSB%2BQDE0XSBbW2MzLGczXSBbYjMsZTRdIH5AMTRdCltbYjIsZTMsYTMsZDRdIH5AMTVdIFtbYTIsZDMsZzMsYzRdIH5AMTVdCltbYjIsZDMsYTMsZzJdIH5AMTVdIFtbZzIsZDMsZzMsYzRdIH5AMTVdCltnMiB%2BIGQzIH4gYTMgfiBbZnM0LGIzXSB%2BQDMgYjMgfiBkNCB%2BQDNdIFtnMiB%2BIGQzIH4gYTMgfiBbYjMsZnM0XSB%2BQDMgYTMgfiBkNCB%2BQDNdCltbZzIsYzMsZTMsZzNdIGIzIH5AMTRdIFtbYzMsZzMsYjMsZTRdIH5AMTVdCltbYjIsZTMsYTNdIGQ0IH5AMTRdIFthMiBbZDMsZzNdIGM0IH5AMTNdCn4gfiBbW2cyLGIyLGQzLGEzXSB%2BQDE1XSBbYTIgW2czLGQzLGM0XSB%2BQDE0XQo%2BYCkKICAucyhLRVkpCiAgLnJlbGVhc2UoMS4yKQogIC5nYWluKDAuNzIpOwoKbGV0IHRyYWNrX2FycF9hY2NvbXBhbmltZW50ID0gYXJyYW5nZSgKICBbMjYsIHRyYWNrX2FycF9hY2NvbXBhbmltZW50X2FdLAogIFsxNiwgdHJhY2tfYXJwX2FjY29tcGFuaW1lbnRfYl0KKQogIC5nYWluKHNpbmUucmFuZ2UoMC42MiwgMC44Nikuc2xvdygxNikpCiAgLnJvb20ocGVybGluLnJhbmdlKDAuMDgsIDAuMjQpLnNsb3coOCkpCiAgLmxwZihzaW5lLnJhbmdlKDE2MDAsIDQyMDApLnNsb3coMTYpKTsKCi8vIOKVkOKVkOKVkCBNZWxvZHkgMTogMTAgY3ljbGVzIOKVkOKVkOKVkAoKbGV0IHRyYWNrX21lbG9keTEgPSBub3RlKGA8fiB%2BIFtbZnM2LGE1XSB%2BQDE1XSB%2BIFtbZzYsYjVdIH5AMTVdIH4gW1thNCxhNV0gfkAxNV0gfiBbW2Q0LGQ1XSB%2BQDE1XSB%2BPmApCiAgLnMoSE9STikKICAucmVsZWFzZSg0KQogIC5nYWluKDAuOTUpOwoKLy8g4pWQ4pWQ4pWQIE1lbG9keSAyOiAxNiBjeWNsZXMg4pWQ4pWQ4pWQCgpsZXQgdHJhY2tfbWVsb2R5Ml9jaG9yZHMgPSBub3RlKGA8CltbZDUsZnM1LGI0XSB%2BQDUgW2U1LGc1LGI0XSB%2BQDUgW2I0LGQ1LGZzNV0gfkAzXSBbW2c0LGE0LGQ1LGI0XSB%2BQDUgW2E0LGU0LGM1XSB%2BQDUgW2IzLGQ0LGc0XSB%2BQDNdCltbZTUsYzVdIH4gW2Q1LGE0XSB%2BQDMgW2E0LGZzNF0gfiBbZzQsZTRdIH5AN10gW35AMTIgW2U1LGI0XSB%2BIFthNCxkNV0gfl0KW35ANCBbYjQsZzRdIH4gW2Q1LGE0XSB%2BQDUgW2M1LGE0XSB%2BIFtkNCxnNCxiNF0gfl0gW35ANCBbYTQsZTRdIH4gW2Q0LGI0LGc0XSB%2BQDUgW2c0LGM1XSB%2BIFthNCxkNV0gfl0KfiB%2BCltbZzUsYjVdIH5ANSBbZzUsYTUsZTVdIH5ANSBbZzUsZDUsYjVdIH5AM10gW1tlNSxiNV0gfkA1IFtkNSxhNV0gfkA1IFtiNCxnNSxlNV0gfkAzXQpbW2E0LGI1LGU1XSB%2BIFtiNCxkNSxhNV0gfkAzIFtiNCxnNF0gfiBbZDUsYTRdIH5AN10gW35AMTIgW2I0LGU1XSB%2BIFthNCxkNV0gfl0KW35ANCBbZzQsYjRdIH4gW2E0LGQ1XSB%2BQDUgW2E0LGM1XSB%2BIFtnNCxiNCxkNF0gfl0gW35ANCBbYTQsZTRdIH4gW2c0LGI0XSB%2BQDUgW2U0LGE0XSB%2BIFtkNSxiM10gfl0KfiB%2BCj5gKQogIC5zKE1BUklNQkEpCiAgLnJlbGVhc2UoMS42KQogIC5nYWluKDEuMikKICAucm9vbSgwLjE4KTsKCmxldCB0cmFja19tZWxvZHkyX2xlYWQgPSBub3RlKGA8CmQ1IH5ANSBlNSB%2BQDUgZnM1IH5AMyBiNCB%2BQDUgYzUgfkA1IGc0IH5AMwplNSB%2BIGQ1IH5AMyBhNCB%2BIGc0IH5ANyB%2BQDEyIGU1IH4gZDUgfgp%2BQDQgYjQgfiBkNSB%2BQDUgYzUgfiBiNCB%2BIH5ANCBhNCB%2BIGI0IH5ANSBjNSB%2BIGQ1IH4KfiB%2BCmI1IH5ANSBhNSB%2BQDUgYjUgfkAzIGI1IH5ANSBhNSB%2BQDUgZzUgfkAzCmU1IH4gYTUgfkAzIGc0IH4gYTQgfkA3IH5AMTIgZTUgfiBkNSB%2BCn5ANCBiNCB%2BIGQ1IH5ANSBjNSB%2BIGI0IH4gfkA0IGE0IH4gYjQgfkA1IGE0IH4gZDUgfgp%2BIH4KPmApCiAgLnMoSE9STikKICAucmVsZWFzZSgzLjIpCiAgLmdhaW4oMC41MikKICAuZGVsYXkoMC4wOCkKICAucm9vbSgwLjIyKTsKCmxldCB0cmFja19tZWxvZHkyX2VjaG8gPSBub3RlKGA8Cn4gfiB%2BIH4gfiB%2BIH4gfgpbfkAyIGI1IH5AMyBhNSB%2BQDMgZzUgfkA1XSBbfkAyIGU1IH5AMyBkNSB%2BQDMgYjQgfkA1XQpbfkAyIGE1IH4gYjUgfkAzIGE1IH4gZzUgfkA1XSBbfkAyIGU1IH4gZnM1IH5AMyBkNSB%2BIGI0IH5ANV0KW35ANCBnNSB%2BIGU1IH5ANSBjNSB%2BIGI0IH5dIFt%2BQDQgYTQgfiBiNCB%2BQDUgZTUgfiBkNSB%2BXQp%2BIH4KPmApCiAgLnMoUExVQ0spCiAgLnJlbGVhc2UoMS4yKQogIC5nYWluKDAuMTUpCiAgLmRlbGF5KDAuMjIpCiAgLnJvb20oMC4zNSk7CgpsZXQgdHJhY2tfbWVsb2R5MiA9IHN0YWNrKAogIHRyYWNrX21lbG9keTJfY2hvcmRzLAogIHRyYWNrX21lbG9keTJfbGVhZCwKICB0cmFja19tZWxvZHkyX2VjaG8KKQogIC5nYWluKCI8MC45MiAxIDAuODggMT4vOCIpOwoKLy8g4pWQ4pWQ4pWQIE1lbG9keSAzOiBjbGltYXgsIDE2IGN5Y2xlcyDilZDilZDilZAKCmxldCB0cmFja19tZWxvZHkzX2xlYWQgPSBub3RlKGA8CltbYjQsZzRdIH5ANSBjNSB%2BQDUgZDUgfkAzXSBbfiBbYzUsZTVdIH5ANSBiNSB%2BQDUgYTUgfkAzXQpbZDQgW2I0LGQ1XSB%2BQDQgZnM1IH5ANSBhNSB%2BQDNdIFtbZTQsZzQsZzVdIH5ANSBjNSB%2BQDUgYjQgfkAzXQpbW2Q0LGEzLGE0XSB%2BQDYgYjQgfkA0IGM1IH5AM10gW1tjNCxnNF0gZDUgfkA0IGU1IH5ANSBmczUgfkAzXQpbW2I0LGQ0XSB%2BQDE1XSB%2BCltbZzQsZDQsYjRdIH5ANSBjNSB%2BQDUgZDUgfkAzXSBbW2U1LGI0LGU0XSB%2BQDUgYjUgfkA1IGE1IH5AM10KW1thNCxmczRdIFtkNSxkNF0gfkA0IGE1IH5ANSBmczUgfkAzXSBbfkAyIGM0IGc0IFtjNSxnNV0gfkAxMV0KW1thNCxlNCxjNF0gfkA1IFtiNCxmczRdIFtkNCxiM10gfkA1IFtjNSxjNCxnNCxhNF0gfkAyXSBbZnMzIFtmczQsYjNdIH5ANSBlNCB%2BQDYgZDQgfl0KW35AMiBbZDMsZzMsYjNdIGc0IH5AMTJdIH4KPmApLnMoSE9STikudHJhbnNwb3NlKDEyKQogIC5yZWxlYXNlKDMuNikKICAuZ2FpbigiPDEuNzIgMS43OCAxLjg0IDEuOT4vOCIpCiAgLnJvb20oMC4yNCkKICAuZWFybHkoMC4wMyk7CgpsZXQgdHJhY2tfbWVsb2R5M19wYWQgPSBub3RlKGA8CltbZzQsYjQsZDVdIH5AMTVdIFtbYzUsZTUsZzVdIH5AMTVdIFtbZDQsZnM0LGE0LGQ1XSB%2BQDE1XSBbW2U0LGc0LGI0LGU1XSB%2BQDE1XQpbW2EzLGM0LGU0LGE0XSB%2BQDE1XSBbW2M0LGU0LGc0LGM1XSB%2BQDE1XSBbW2czLGIzLGQ0LGc0XSB%2BQDE1XSB%2BCltbZzQsYjQsZDUsZzVdIH5AMTVdIFtbZTQsZzQsYjQsZTVdIH5AMTVdIFtbZDQsZnM0LGE0LGQ1XSB%2BQDE1XSBbW2M0LGU0LGc0LGM1XSB%2BQDE1XQpbW2EzLGM0LGU0LGE0XSB%2BQDE1XSBbW2Q0LGZzNCxhNCxkNV0gfkAxNV0gW1tnMyxiMyxkNCxnNF0gfkAxNV0gfgo%2BYCkKICAudHJhbnNwb3NlKC0xMikKICAucyhQQUQpCiAgLnJlbGVhc2UoNC41KQogIC5nYWluKCI8MC4xOCAwLjIyIDAuMjggMC4zNj4vOCIpCiAgLnJvb20oMC40OCkKICAuZGVsYXkoMC4xMikKICAubHBmKCI8MTgwMCAyMjAwIDI4MDAgMzYwMD4vOCIpOwoKbGV0IHRyYWNrX21lbG9keTNfc3BhcmtsZSA9IG5vdGUoYDwKfiB%2BIH4gfiBbfkA4IGU2IH4gZzYgfl0gW35AOCBkNiB%2BIGZzNiB%2BXSB%2BIH4KW35ANiBnNiB%2BIGI2IH5ANl0gW35ANiBlNiB%2BIGE2IH5ANl0KW35ANCBmczYgfiBhNiB%2BQDUgZDcgfl0gW35ANCBlNiB%2BIGc2IH5ANSBjNyB%2BXQpbfkA0IGU2IH4gZnM2IH5ANSBhNiB%2BXSBbfkA0IGQ2IH4gZTYgfkA1IGZzNiB%2BXQpbfkAyIGc2IH4gYjYgfiBkNyB%2BQDhdIH4KPmApCiAgLnMoUExVQ0spCiAgLnJlbGVhc2UoMS4xKQogIC5nYWluKCI8MC4xOCAwLjIyIDAuMjggMC4zND4vOCIpCiAgLnJvb20oMC40MikKICAuZGVsYXkoMC4yOCk7CgpsZXQgdHJhY2tfbWVsb2R5M19sb3cgPSBub3RlKGA8CltnMiB%2BQDE1XSBbYTIgfkAxNV0gW2QyIH5AMTVdIFtlMiB%2BQDE1XQpbYTIgfkAxNV0gW2MyIH5AMTVdIFtnMiB%2BQDE1XSB%2BCltnMiB%2BQDE1XSBbZTIgfkAxNV0gW2QyIH5AMTVdIFtjMiB%2BQDE1XQpbYTIgfkAxNV0gW2QyIH5AMTVdIFtnMiB%2BQDE1XSB%2BCj5gKQogIC5zKEtFWSkKICAucmVsZWFzZSgyLjUpCiAgLmdhaW4oMC4yMikKICAubHBmKDcwMCkKICAucm9vbSgwLjEyKTsKCmxldCB0cmFja19tZWxvZHkzID0gc3RhY2soCiAgdHJhY2tfbWVsb2R5M19sb3csCiAgdHJhY2tfbWVsb2R5M19wYWQsCiAgdHJhY2tfbWVsb2R5M19sZWFkLAogIHRyYWNrX21lbG9keTNfc3BhcmtsZQopCiAgLmdhaW4oIjwwLjg4IDAuOTQgMSAxLjA2Pi84Iik7CgovLyDilZDilZDilZAgQXJyYW5nZW1lbnQ6IDEwICsgMTYgKyAxNiA9IDQyIGN5Y2xlcyDilZDilZDilZAKCmxldCB0cmFja19tZWxvZGllcyA9IGFycmFuZ2UoCiAgWzEwLCB0cmFja19tZWxvZHkxXSwKICBbMTYsIHRyYWNrX21lbG9keTJdLAogIFsxNiwgdHJhY2tfbWVsb2R5M10KKQogIC5yb29tKDAuMTgpCiAgLmRlbGF5KDAuMTIpOwoKbGV0IHRyYWNrX3BpY2t1cF9hY2NlbnQgPSBhcnJhbmdlKAogIFszMiwgcygifiIpXSwKICBbMiwgbm90ZShgPFtnMiBkMyBhMyBbYjMsZnM0XSB%2BIGIzIGQ0IH5dIFtnMiBkMyBhMyBbZnM0LGIzXSB%2BIGEzIGQ0IH5dPmApCiAgICAucygicGlhbm8iKQogICAgLmdhaW4oMC40NSkKICAgIC5yb29tKDAuMikKICBdLAogIFs4LCBzKCJ%2BIildCik7CgpzdGFjaygKICB0cmFja19hcnBfYWNjb21wYW5pbWVudCwKICB0cmFja19tZWxvZGllcywKICB0cmFja19waWNrdXBfYWNjZW50CikKICAuY3BtKGNwbSk7";
+
 const demos = [
   {
     title: "SVLive",
-    text: "Placeholder for a live coding / controllable music generation demo."
-  },
-  {
-    title: "VoicePlatform",
-    text: "Placeholder for an audio-video translation, dubbing, and editing workflow demo."
-  },
-  {
-    title: "LEMAS-TTS / Edit",
-    text: "Placeholder for generative speech model demos built on the LEMAS corpus."
-  },
-  {
-    title: "Robot Speech Interaction",
-    text: "Placeholder for embodied speech interaction demos."
+    text: "Dreamy Strudel live-coding demo with Vital sample presets. Opens directly in strudel.cc.",
+    link: dreamyDemoUrl,
+    preview: [
+      "let cpm = 28.0;",
+      "await samples('.../dreamy-demo-vital/strudel.json')",
+      "let KEY = 'vital_keystation';",
+      "let PAD = 'vital_flute_1';",
+      "let HORN = 'vital_damped_horn';",
+      "let track_melodies = arrange(",
+      "  [10, track_melody1],",
+      "  [16, track_melody2],",
+      "  [16, track_melody3]",
+      ");",
+      "stack(track_arp_accompaniment, track_melodies).cpm(cpm);"
+    ]
   }
 ];
 ---
@@ -120,7 +125,7 @@ const demos = [
     </div>
     <div class="size-30 md:size-38 md:mt-2">
       <FlipImage
-        front="https://github.com/Approximetal.png"
+        front="/img/avatar-front-original.png"
         back="/img/avatar-back.png"
         alt="Zhiyuan Zhao"
       />
@@ -177,7 +182,7 @@ const demos = [
       {featured.map((item) => (
         <a class="home-card project-home-card !no-underline !text-fg" href={item.link}>
           <div class="project-card-head">
-            <div>
+            <div class="project-card-title">
               <div class="card-kicker">{item.tag}</div>
               <h3>{item.title}</h3>
             </div>
@@ -197,36 +202,46 @@ const demos = [
 
   <section mt-12>
     <h2>Demos</h2>
-    <div class="card-grid">
+    <div class="demo-grid">
       {demos.map((item) => (
-        <article class="demo-card">
-          <div class="demo-placeholder">
-            <span>demo placeholder</span>
-          </div>
-          <div class="demo-copy">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </div>
-        </article>
+        item.link ? (
+          <a class="demo-card demo-link-card !no-underline !text-fg" href={item.link} target="_blank" rel="noopener noreferrer">
+            <div class="demo-code-thumb" aria-label={`${item.title} code preview`}>
+              <div class="code-window-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+                <strong>dreamy_demo.strudel.js</strong>
+              </div>
+              <pre>{item.preview?.map((line) => <code>{line}</code>)}</pre>
+            </div>
+            <div class="demo-copy">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </a>
+        ) : (
+          <article class="demo-card">
+            <div class="demo-placeholder">
+              <span>demo placeholder</span>
+            </div>
+            <div class="demo-copy">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        )
       ))}
     </div>
   </section>
 
-  <section mt-12>
-    <h2>Beyond Research</h2>
-    <div grid="~ cols-2 md:cols-5 gap-2">
-      {["Photography", "Travel", "Music", "Cycling", "Reading"].map((item) => (
-        <div class="small-card">{item}</div>
-      ))}
-    </div>
-  </section>
+  <p class="to-be-continued">To Be Continued</p>
 
 </Layout>
 
 <style>
   .home-card,
-  .demo-card,
-  .small-card {
+  .demo-card {
     border: 1px solid hsl(var(--border));
     background: hsl(var(--bg-dark) / 0.42);
     border-radius: 0.5rem;
@@ -236,6 +251,20 @@ const demos = [
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 34rem;
+   }
+
+  .to-be-continued {
+    color: hsl(var(--fg-light));
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 3rem 0 0;
+    text-align: center;
   }
 
   .hero-title {
@@ -384,8 +413,12 @@ const demos = [
   .project-card-head {
     align-items: flex-start;
     display: flex;
-    gap: 0.75rem;
+    gap: 1rem;
     justify-content: space-between;
+  }
+
+  .project-card-title {
+    min-width: 0;
   }
 
   .project-logo {
@@ -396,7 +429,7 @@ const demos = [
     border-radius: 0.45rem;
     color: hsl(var(--fg-light));
     display: flex;
-    flex: 0 0 2.65rem;
+    flex: 0 0 5.3rem;
     font-size: 0.68rem;
     font-weight: 700;
     justify-content: center;
@@ -407,8 +440,8 @@ const demos = [
   .project-logo img {
     height: 100%;
     margin: 0 !important;
-    object-fit: contain;
-    padding: 0.28rem;
+    object-fit: cover;
+    padding: 0;
     width: 100%;
   }
 
@@ -440,6 +473,22 @@ const demos = [
     overflow: hidden;
   }
 
+  .demo-link-card {
+    transition:
+      border-color 160ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+
+  .demo-link-card:hover {
+    border-color: hsl(var(--primary) / 0.45);
+    background: hsl(var(--bg-dark) / 0.72);
+    box-shadow: 0 0.75rem 1.8rem hsl(var(--fg-dark) / 0.08);
+    transform: translateY(-2px);
+    text-decoration: none !important;
+  }
+
   .demo-placeholder {
     align-items: center;
     aspect-ratio: 16 / 9;
@@ -454,6 +503,69 @@ const demos = [
     text-transform: uppercase;
   }
 
+  .demo-code-thumb {
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(circle at 80% 12%, hsl(var(--primary) / 0.18), transparent 34%),
+      linear-gradient(135deg, #141416, #232329);
+    border-bottom: 1px solid hsl(var(--border));
+    color: #d9d9de;
+    display: flex;
+    flex-direction: column;
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    overflow: hidden;
+  }
+
+  .code-window-bar {
+    align-items: center;
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    display: flex;
+    gap: 0.36rem;
+    min-height: 1.7rem;
+    padding: 0 0.65rem;
+  }
+
+  .code-window-bar span {
+    aspect-ratio: 1;
+    background: rgb(255 255 255 / 0.32);
+    border-radius: 999px;
+    width: 0.46rem;
+  }
+
+  .code-window-bar strong {
+    color: rgb(255 255 255 / 0.58);
+    font-size: 0.62rem;
+    font-weight: 600;
+    margin-left: 0.35rem;
+  }
+
+  .demo-code-thumb pre {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.62rem;
+    line-height: 1.45;
+    margin: 0;
+    overflow: hidden;
+    padding: 0.55rem 0.7rem 0.75rem;
+  }
+
+  .demo-code-thumb code {
+    color: inherit;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .demo-code-thumb code:nth-child(2n) {
+    color: #f1cf8a;
+  }
+
+  .demo-code-thumb code:nth-child(3n) {
+    color: #9bd6ff;
+  }
+
   .demo-copy {
     padding: 0.85rem 1rem 1rem;
   }
@@ -464,12 +576,6 @@ const demos = [
 
   .demo-copy p {
     margin: 0;
-  }
-
-  .small-card {
-    padding: 0.85rem;
-    text-align: center;
-    font-weight: 700;
   }
 
   @media (max-width: 420px) {
