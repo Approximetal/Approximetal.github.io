@@ -10,7 +10,7 @@ const title = `From Perception to Action - ${SITE.title}`;
 <Layout class="blog-page" title={title}>
   <div class="blog-topbar">
     <a class="back-link" href="/">Back to Home</a>
-    <div class="language-toggle" aria-label="Language selector">
+    <div class="lang-toggle" aria-label="Language selector">
       <button class="active" type="button" data-lang-button="en">English</button>
       <button type="button" data-lang-button="zh">Chinese</button>
     </div>
@@ -58,12 +58,12 @@ const title = `From Perception to Action - ${SITE.title}`;
     font-size: 0.86rem;
   }
 
-  .language-toggle {
+  .lang-toggle {
     display: flex;
     gap: 0.45rem;
   }
 
-  .language-toggle button {
+  .lang-toggle button {
     background: hsl(var(--bg-dark) / 0.42);
     border: 1px solid hsl(var(--border));
     border-radius: 0.45rem;
@@ -74,7 +74,7 @@ const title = `From Perception to Action - ${SITE.title}`;
     padding: 0.32rem 0.72rem;
   }
 
-  .language-toggle button.active {
+  .lang-toggle button.active {
     border-color: hsl(var(--primary) / 0.55);
     color: hsl(var(--fg));
   }

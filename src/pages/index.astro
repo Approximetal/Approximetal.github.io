@@ -96,10 +96,10 @@ const dreamyDemoUrl =
 const demos = [
   {
     kind: "blog",
-    title: "From Perception to Action",
-    text: "Essay on closed-loop multimodal human-machine interaction systems.",
+    title: "From Perception to Action: A Closed-Loop Architecture for Next-Generation Human-Machine Interaction Systems",
+    text: "",
     link: "/blog/from-perception-to-action-closed-loop-hmi/",
-    meta: "English / Chinese",
+    meta: "Blog",
     preview: [
       "Most interactive systems today are still largely passive instruction followers.",
       "Next-generation HMI systems require a shift from discrete commands",
@@ -236,7 +236,7 @@ const demos = [
             </div>
             <div class="demo-copy">
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              {item.text && <p>{item.text}</p>}
             </div>
           </a>
         ) : item.link ? (
@@ -246,13 +246,13 @@ const demos = [
                 <span></span>
                 <span></span>
                 <span></span>
-                <strong>dreamy_demo.strudel.js</strong>
+                <strong>Music</strong>
               </div>
               <pre>{item.preview?.map((line) => <code>{line}</code>)}</pre>
             </div>
             <div class="demo-copy">
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              {item.text && <p>{item.text}</p>}
             </div>
           </a>
         ) : (
@@ -262,7 +262,7 @@ const demos = [
             </div>
             <div class="demo-copy">
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              {item.text && <p>{item.text}</p>}
             </div>
           </article>
         )
