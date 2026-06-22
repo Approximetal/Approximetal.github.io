@@ -95,6 +95,14 @@ const dreamyDemoUrl =
 
 const demos = [
   {
+    kind: "blog",
+    title: "From Perception to Action",
+    text: "Essay on closed-loop multimodal human-machine interaction systems.",
+    link: "/blog/from-perception-to-action-closed-loop-hmi/",
+    meta: "English / 中文"
+  },
+  {
+    kind: "code",
     title: "SVLive",
     text: "Dreamy Strudel live-coding demo with Vital sample presets. Opens directly in strudel.cc.",
     link: dreamyDemoUrl,
@@ -204,7 +212,18 @@ const demos = [
     <h2>Demos</h2>
     <div class="demo-grid">
       {demos.map((item) => (
-        item.link ? (
+        item.kind === "blog" ? (
+          <a class="demo-card demo-link-card blog-demo-card !no-underline !text-fg" href={item.link}>
+            <div class="blog-demo-thumb">
+              <span>{item.meta}</span>
+              <strong>Closed-Loop HMI</strong>
+            </div>
+            <div class="demo-copy">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </a>
+        ) : item.link ? (
           <a class="demo-card demo-link-card !no-underline !text-fg" href={item.link} target="_blank" rel="noopener noreferrer">
             <div class="demo-code-thumb" aria-label={`${item.title} code preview`}>
               <div class="code-window-bar">
@@ -255,9 +274,9 @@ const demos = [
 
   .demo-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 34rem;
-   }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
 
   .to-be-continued {
     color: hsl(var(--fg-light));
@@ -503,6 +522,39 @@ const demos = [
     text-transform: uppercase;
   }
 
+  .blog-demo-thumb {
+    align-items: flex-start;
+    aspect-ratio: 16 / 9;
+    background:
+      linear-gradient(135deg, hsl(var(--bg-dark) / 0.72), hsl(var(--bg) / 0.46)),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 1.15rem,
+        hsl(var(--border) / 0.4) 1.18rem
+      );
+    border-bottom: 1px solid hsl(var(--border));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    padding: 1rem;
+  }
+
+  .blog-demo-thumb span {
+    color: hsl(var(--fg-light));
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .blog-demo-thumb strong {
+    color: hsl(var(--fg));
+    font-size: 1.12rem;
+    line-height: 1.15;
+  }
+
   .demo-code-thumb {
     aspect-ratio: 16 / 9;
     background:
@@ -586,7 +638,8 @@ const demos = [
   }
 
   @media (max-width: 640px) {
-    .card-grid {
+    .card-grid,
+    .demo-grid {
       grid-template-columns: 1fr;
     }
   }

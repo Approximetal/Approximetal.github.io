@@ -1,0 +1,117 @@
+---
+import { SITE } from "@/config";
+import Layout from "@/layouts/Layout.astro";
+import ArticleEn from "@/content/blog/from_perception_to_action_closed_loop_hmi_en.md";
+import ArticleZh from "@/content/blog/from_perception_to_action_closed_loop_hmi_zh.md";
+
+const title = `From Perception to Action - ${SITE.title}`;
+---
+
+<Layout class="blog-page" title={title}>
+  <section class="blog-header">
+    <a class="back-link" href="/">Back to Home</a>
+    <p class="blog-kicker">Essay</p>
+    <h1>From Perception to Action</h1>
+    <p>
+      A closed-loop architecture for next-generation human-machine interaction systems.
+    </p>
+    <div class="language-toggle" aria-label="Language selector">
+      <button class="active" type="button" data-lang-button="en">English</button>
+      <button type="button" data-lang-button="zh">中文</button>
+    </div>
+  </section>
+
+  <article class="blog-article" data-lang-panel="en">
+    <ArticleEn />
+  </article>
+  <article class="blog-article hidden" data-lang-panel="zh">
+    <ArticleZh />
+  </article>
+</Layout>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>("[data-lang-button]")];
+  const panels = [...document.querySelectorAll<HTMLElement>("[data-lang-panel]")];
+
+  function setLanguage(lang: string) {
+    buttons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.langButton === lang);
+    });
+    panels.forEach((panel) => {
+      panel.classList.toggle("hidden", panel.dataset.langPanel !== lang);
+    });
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => setLanguage(button.dataset.langButton || "en"));
+  });
+
+  setLanguage("en");
+</script>
+
+<style>
+  .blog-header {
+    border-bottom: 1px solid hsl(var(--border));
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .back-link {
+    color: hsl(var(--fg-light));
+    font-size: 0.86rem;
+  }
+
+  .blog-kicker {
+    color: hsl(var(--fg-light));
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin: 1.3rem 0 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .blog-header h1 {
+    margin: 0;
+  }
+
+  .blog-header p:last-of-type {
+    color: hsl(var(--fg-light));
+    margin-bottom: 0;
+  }
+
+  .language-toggle {
+    display: flex;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .language-toggle button {
+    background: hsl(var(--bg-dark) / 0.42);
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.45rem;
+    color: hsl(var(--fg-light));
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.86rem;
+    padding: 0.32rem 0.72rem;
+  }
+
+  .language-toggle button.active {
+    border-color: hsl(var(--primary) / 0.55);
+    color: hsl(var(--fg));
+  }
+
+  .blog-article {
+    overflow-wrap: anywhere;
+  }
+
+  .blog-article.hidden {
+    display: none;
+  }
+
+  .blog-article :global(table) {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+</style>
