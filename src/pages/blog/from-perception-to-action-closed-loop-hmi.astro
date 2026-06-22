@@ -1,4 +1,4 @@
----
+﻿---
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
 import ArticleEn from "@/content/blog/from_perception_to_action_closed_loop_hmi_en.md";
@@ -8,19 +8,13 @@ const title = `From Perception to Action - ${SITE.title}`;
 ---
 
 <Layout class="blog-page" title={title}>
-  <section class="blog-header">
+  <div class="blog-topbar">
     <a class="back-link" href="/">Back to Home</a>
-    <p class="blog-kicker">Essay</p>
-    <h1>From Perception to Action</h1>
-    <p>
-      A closed-loop architecture for next-generation human-machine interaction systems.
-    </p>
     <div class="language-toggle" aria-label="Language selector">
       <button class="active" type="button" data-lang-button="en">English</button>
-      <button type="button" data-lang-button="zh">中文</button>
+      <button type="button" data-lang-button="zh">Chinese</button>
     </div>
-  </section>
-
+  </div>
   <article class="blog-article" data-lang-panel="en">
     <ArticleEn />
   </article>
@@ -51,10 +45,12 @@ const title = `From Perception to Action - ${SITE.title}`;
 </script>
 
 <style>
-  .blog-header {
-    border-bottom: 1px solid hsl(var(--border));
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
+  .blog-topbar {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
   }
 
   .back-link {
@@ -62,27 +58,9 @@ const title = `From Perception to Action - ${SITE.title}`;
     font-size: 0.86rem;
   }
 
-  .blog-kicker {
-    color: hsl(var(--fg-light));
-    font-size: 0.82rem;
-    font-weight: 700;
-    margin: 1.3rem 0 0.35rem;
-    text-transform: uppercase;
-  }
-
-  .blog-header h1 {
-    margin: 0;
-  }
-
-  .blog-header p:last-of-type {
-    color: hsl(var(--fg-light));
-    margin-bottom: 0;
-  }
-
   .language-toggle {
     display: flex;
     gap: 0.45rem;
-    margin-top: 1rem;
   }
 
   .language-toggle button {
@@ -113,5 +91,12 @@ const title = `From Perception to Action - ${SITE.title}`;
     display: block;
     overflow-x: auto;
     width: 100%;
+  }
+
+  @media (max-width: 520px) {
+    .blog-topbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
   }
 </style>

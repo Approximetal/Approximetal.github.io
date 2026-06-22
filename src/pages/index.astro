@@ -1,4 +1,4 @@
----
+﻿---
 import { SITE } from "@/config";
 import type { SocialItem } from "@/types";
 import Links from "@/components/Links.astro";
@@ -99,7 +99,18 @@ const demos = [
     title: "From Perception to Action",
     text: "Essay on closed-loop multimodal human-machine interaction systems.",
     link: "/blog/from-perception-to-action-closed-loop-hmi/",
-    meta: "English / 中文"
+    meta: "English / Chinese",
+    preview: [
+      "Most interactive systems today are still largely passive instruction followers.",
+      "Next-generation HMI systems require a shift from discrete commands",
+      "to continuous understanding across time, modalities, and turns.",
+      "",
+      "Perception -> Understanding -> Execution",
+      "",
+      "perception is not detection, but prediction;",
+      "understanding is not classification, but state tracking;",
+      "execution is not synthesis, but externalized strategy."
+    ]
   },
   {
     kind: "code",
@@ -113,8 +124,8 @@ const demos = [
       "let PAD = 'vital_flute_1';",
       "let HORN = 'vital_damped_horn';",
       "let track_melodies = arrange(",
-      "  [10, track_melody1],",
-      "  [16, track_melody2],",
+      "  [10, track_melody1]",
+      "  [16, track_melody2]",
       "  [16, track_melody3]",
       ");",
       "stack(track_arp_accompaniment, track_melodies).cpm(cpm);"
@@ -214,9 +225,14 @@ const demos = [
       {demos.map((item) => (
         item.kind === "blog" ? (
           <a class="demo-card demo-link-card blog-demo-card !no-underline !text-fg" href={item.link}>
-            <div class="blog-demo-thumb">
-              <span>{item.meta}</span>
-              <strong>Closed-Loop HMI</strong>
+            <div class="demo-code-thumb blog-preview-thumb" aria-label={`${item.title} article preview`}>
+              <div class="code-window-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+                <strong>{item.meta}</strong>
+              </div>
+              <pre>{item.preview?.map((line) => <code>{line}</code>)}</pre>
             </div>
             <div class="demo-copy">
               <h3>{item.title}</h3>
@@ -520,39 +536,6 @@ const demos = [
     justify-content: center;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-  }
-
-  .blog-demo-thumb {
-    align-items: flex-start;
-    aspect-ratio: 16 / 9;
-    background:
-      linear-gradient(135deg, hsl(var(--bg-dark) / 0.72), hsl(var(--bg) / 0.46)),
-      repeating-linear-gradient(
-        0deg,
-        transparent 0,
-        transparent 1.15rem,
-        hsl(var(--border) / 0.4) 1.18rem
-      );
-    border-bottom: 1px solid hsl(var(--border));
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-    padding: 1rem;
-  }
-
-  .blog-demo-thumb span {
-    color: hsl(var(--fg-light));
-    font-size: 0.72rem;
-    font-weight: 700;
-    margin-bottom: 0.35rem;
-    text-transform: uppercase;
-  }
-
-  .blog-demo-thumb strong {
-    color: hsl(var(--fg));
-    font-size: 1.12rem;
-    line-height: 1.15;
   }
 
   .demo-code-thumb {
